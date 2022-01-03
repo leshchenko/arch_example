@@ -9,8 +9,8 @@ import retrofit2.http.Query
 interface MoviesApi {
     @GET("trending/{media_type}/{time_window}")
     suspend fun getMoviesList(
-        @Query("page") page: Int = 1,
         @Path("media_type") mediaType: String = "all",
         @Path("time_window") timeWindow: String = "week",
+        @Query("page") page: Int = 1,
     ): Response<MoviesListResponse>
 }

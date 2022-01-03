@@ -15,7 +15,7 @@ class MoviesRemoteDataSourceImpl(
 ) : MoviesDataSource.Remote {
 
     override suspend fun loadMovies(page: Int): List<MovieDomain> =
-        moviesApi.getMoviesList(page).check().body()?.results?.map(::mapMovieToDomain)
+        moviesApi.getMoviesList(page = page).check().body()?.results?.map(::mapMovieToDomain)
             ?: emptyList()
 
     override suspend fun loadMovieDetails(movieId: Int): MovieDetailsDomain? =

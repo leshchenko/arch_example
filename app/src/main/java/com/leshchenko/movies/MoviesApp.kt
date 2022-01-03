@@ -24,6 +24,7 @@ class MoviesApp : Application() {
                 dataSourceModule,
                 dbModule,
                 retrofitModule,
+                viewModelModule
             )
         )
     }

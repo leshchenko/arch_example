@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.leshchenko.movies.databinding.MovieListItemBinding
 import com.leshchenko.movies.ui.movies_list.model.MovieModelView
 
-class MoviesAdapter :
+class MoviesAdapter(private val itemClick: (movieId: Int) -> Unit) :
     ListAdapter<MovieModelView, MoviesAdapter.MovieViewHolder>(movieItemDiffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder =
@@ -29,6 +29,7 @@ class MoviesAdapter :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(movie: MovieModelView) {
             binding.movieNameTextView.text = movie.name
+            binding.root.setOnClickListener { itemClick(movie.id) }
         }
     }
 
