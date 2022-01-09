@@ -16,12 +16,6 @@ class MoviesRepositoryImpl(
     override fun movieDetailsFlow(movieId: Int): Flow<MovieDetailsDomain?> =
         moviesLocalDataSource.movieDetailsFlow(movieId)
 
-//    override suspend fun addMovies(movies: List<MovieDomain>) =
-//        moviesLocalDataSource.addMovies(movies)
-//
-//    override suspend fun addMovieDetails(movieDetailsDomain: MovieDetailsDomain) =
-//        moviesLocalDataSource.addMovieDetails(movieDetailsDomain)
-
     override suspend fun loadMovies(page: Int): List<MovieDomain> =
         moviesRemoteDataSource.loadMovies(page).also { movies ->
             moviesLocalDataSource.addMovies(movies)
